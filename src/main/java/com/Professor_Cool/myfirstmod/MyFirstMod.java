@@ -2,6 +2,7 @@ package com.Professor_Cool.myfirstmod;
 
 import com.Professor_Cool.myfirstmod.blocks.FirstBlock;
 import com.Professor_Cool.myfirstmod.blocks.ModBlocks;
+import com.Professor_Cool.myfirstmod.items.FirstItem;
 import com.Professor_Cool.myfirstmod.setup.ClientProxy;
 import com.Professor_Cool.myfirstmod.setup.IProxy;
 import com.Professor_Cool.myfirstmod.setup.ModSetup;
@@ -66,6 +67,7 @@ public class MyFirstMod
             Item.Properties properties = new Item.Properties()
                     .group(setup.itemGroup);
             event.getRegistry().register(new BlockItem(ModBlocks.FIRSTBLOCK, properties).setRegistryName("firstblock"));
+            event.getRegistry().register(new FirstItem());
         }
     }
 }
