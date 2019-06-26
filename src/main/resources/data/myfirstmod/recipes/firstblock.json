@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##y",
+    "#x#",
+    "y##"
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:iron_block"
+    },
+    "#": {
+      "tag": "forge:dyes/green"
+    },
+    "y": {
+      "tag": "forge:dyes/red"
+    }
+  },
+  "result": {
+    "item": "myfirstmod:firstblock"
+  }
+}
