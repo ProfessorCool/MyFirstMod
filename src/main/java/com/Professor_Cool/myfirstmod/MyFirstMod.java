@@ -4,6 +4,7 @@ import com.Professor_Cool.myfirstmod.blocks.FirstBlock;
 import com.Professor_Cool.myfirstmod.blocks.ModBlocks;
 import com.Professor_Cool.myfirstmod.setup.ClientProxy;
 import com.Professor_Cool.myfirstmod.setup.IProxy;
+import com.Professor_Cool.myfirstmod.setup.ModSetup;
 import com.Professor_Cool.myfirstmod.setup.ServerProxy;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -32,6 +33,8 @@ public class MyFirstMod
 {
     public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
 
+    public static ModSetup setup = new ModSetup();
+
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -43,7 +46,8 @@ public class MyFirstMod
 
     private void setup(final FMLCommonSetupEvent event)
     {
-
+        setup.init();
+        proxy.init();
     }
 
 
@@ -59,7 +63,9 @@ public class MyFirstMod
 
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
-            event.getRegistry().register(new BlockItem(ModBlocks.FIRSTBLOCK, new Item.Properties()).setRegistryName("firstblock"));
+            Item.Properties properties = new Item.Properties()
+                    .group(setup.itemGroup);
+            event.getRegistry().register(new BlockItem(ModBlocks.FIRSTBLOCK, properties).setRegistryName("firstblock"));
         }
     }
 }
